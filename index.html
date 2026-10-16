@@ -1,0 +1,384 @@
+<title>ScrollSense Privacy Policy</title>
+<meta name="description" content="Privacy policy for the ScrollSense Android app. All data stays on your device.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Hind:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a single reading column under a compact branded header; a fact sheet up top, then numbered policy sections. */
+  :root {
+    --bg: #f6f8f7;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --line: #d7e0dc;
+    --accent: #047857;
+    --accent-wash: #e3f4ec;
+    --placeholder: #9a3412;
+    --placeholder-wash: #fff1e6;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Hind", "Nirmala UI", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f19;
+      --surface: #131b2b;
+      --ink: #f1f5f9;
+      --ink-soft: #a3b1c6;
+      --line: #26334d;
+      --accent: #34d399;
+      --accent-wash: #0f2a22;
+      --placeholder: #fdba74;
+      --placeholder-wash: #3a2212;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0f19;
+    --surface: #131b2b;
+    --ink: #f1f5f9;
+    --ink-soft: #a3b1c6;
+    --line: #26334d;
+    --accent: #34d399;
+    --accent-wash: #0f2a22;
+    --placeholder: #fdba74;
+    --placeholder-wash: #3a2212;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  /* Flex children shrink to the screen; the wide tables scroll inside .table-wrap instead */
+  .page > *, .policy { min-width: 0; }
+  main.page { width: 100%; }  /* auto margins would otherwise size it to its widest line */
+  code { overflow-wrap: anywhere; }
+
+  header { display: flex; flex-direction: column; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand svg { width: 44px; height: 44px; flex: none; }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); align-self: flex-start; }
+  .lang-switch button {
+    font: inherit; font-size: 0.95rem; font-weight: 500;
+    border: 0; background: transparent; color: var(--ink-soft);
+    padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  }
+  .lang-switch button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+  .lang-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .facts {
+    background: var(--accent-wash);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: grid;
+    gap: 10px;
+  }
+  .facts h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0; letter-spacing: 0.02em; }
+  .facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .facts li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .facts li svg { width: 20px; height: 20px; margin-top: 4px; color: var(--accent); }
+
+  section.policy { display: flex; flex-direction: column; gap: 28px; }
+  article { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  article h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    text-wrap: balance;
+  }
+  article p, article ul { margin: 0; }
+  article ul { padding-left: 1.2em; display: grid; gap: 6px; }
+  strong { font-weight: 600; }
+  code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; color: var(--ink-soft); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .fill {
+    color: var(--placeholder);
+    background: var(--placeholder-wash);
+    border: 1px dashed var(--placeholder);
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: 600;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  footer { color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 18px; }
+
+  [lang="hi"] h1, [lang="hi"] article h2, [lang="hi"] .facts h2 { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lang-switch button { transition: background-color 0.15s, color 0.15s; }
+  }
+</style>
+
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg aria-hidden="true" width="44" height="44" viewBox="0 0 108 108"><defs><radialGradient id="bg" cx="54" cy="50" r="66" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#22704C"/><stop offset="1" stop-color="#123F2B"/></radialGradient><clipPath id="msquircle44"><rect x="0" y="0" width="108" height="108" rx="30"/></clipPath></defs><g clip-path="url(#msquircle44)"><rect width="108" height="108" fill="url(#bg)"/><g transform="translate(16.00,14.48) scale(0.76)"><path d="M28,92 a22,3.2 0 1,0 44,0 a22,3.2 0 1,0 -44,0 Z" fill="#000000" fill-opacity="0.1"/><path d="M50,37 C50,32 50,28 51,24" fill="none" stroke="#3E8F60" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M51,24 C43,13 30,13 25,19 C31,28 43,29 51,24 Z" fill="#4FAE77" fill-opacity="1"/><path d="M51,24 C58,11 72,10 77,16 C72,26 59,29 51,24 Z" fill="#62C08A" fill-opacity="1"/><path d="M50,36 C68,36 81,47 81,63 C81,79 67,89 50,89 C33,89 19,79 19,63 C19,47 32,36 50,36 Z" fill="#A9DDB7" fill-opacity="1"/><path d="M21,68 C24,81 36,89 50,89 C64,89 76,81 79,68 C72,77 62,81 50,81 C38,81 28,77 21,68 Z" fill="#8FCDA0" fill-opacity="1"/><path d="M29,46 a6,3.6 0 1,0 12,0 a6,3.6 0 1,0 -12,0 Z" fill="#FFFFFF" fill-opacity="0.45"/><path d="M33,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M55,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M39.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M61.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M36.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M58.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M24.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M66.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M45,71 Q50,76 55,71" fill="none" stroke="#2A2622" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>
+      <span class="brand-name">ScrollSense</span>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="btn-en" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" id="btn-hi" data-lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+  </header>
+
+  <!-- ===================== ENGLISH ===================== -->
+  <main id="policy-en" lang="en" class="page">
+    <div>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Effective date: 17 October 2026 · Applies to the ScrollSense Android app (package <code>com.scrollsense.app</code>)</p>
+    </div>
+
+    <div class="facts">
+      <h2>The short version</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense does not have the Android <strong>Internet permission</strong>. It cannot send your data anywhere on its own.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>Everything the app records stays <strong>on your phone</strong>.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>No account, no ads, no analytics or tracking tools.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>We never read your messages, passwords or what you type.</span></li>
+      </ul>
+    </div>
+
+    <section class="policy">
+      <article>
+        <h2>1. Who we are</h2>
+        <p>ScrollSense is a digital-wellbeing app that helps you limit how many short videos (Reels, Shorts, Spotlight) you swipe through each day. It is developed by IFAST SOLUTION. You can contact us at <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a>.</p>
+      </article>
+
+      <article>
+        <h2>2. What the app stores on your phone</h2>
+        <p>To show your counts, charts and limits, ScrollSense keeps the following in its private storage on your device:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Data</th><th>What it contains</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Swipe log</td><td>Date, hour and time of each swipe, the app it happened in (for example Instagram), whether a DM pass was used, and how long each video stayed on screen</td><td>Daily counter, time in feeds, hourly and weekly charts, streak</td></tr>
+              <tr><td>Your settings</td><td>Daily quota, protection mode, Strict Mode, theme, overlay preferences, your estimated daily swipes from setup</td><td>To apply the limits you chose</td></tr>
+              <tr><td>Per-app rules</td><td>Which apps are protected and which feeds or comments to hide</td><td>Blocking screen controls</td></tr>
+              <tr><td>Recent counting log (memory only)</td><td>The counter's last few hundred decisions (for example "reel counted", "ad skipped") and the layout of each tracked app's last screen, with every word removed</td><td>Only for <strong>Report a problem</strong> (section 5). Kept in memory, never saved to storage, and cleared when the phone or app restarts</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The swipe log does not contain the videos you watched, who posted them, or anything you typed or read.</p>
+      </article>
+
+      <article>
+        <h2>3. How ScrollSense uses the Accessibility Service</h2>
+        <p>ScrollSense needs Android's Accessibility Service to notice when a short-video feed is on screen and when you swipe to the next video. You turn it on yourself, and you can turn it off at any time in <strong>Settings → Accessibility</strong>. With your permission, the service:</p>
+        <ul>
+          <li>Checks the screen layout of <strong>Instagram, YouTube, Facebook and Snapchat</strong> to recognise the Reels, Shorts or Spotlight player, the Instagram DM screen, and sections you chose to hide (such as the Explore grid or YouTube comments).</li>
+          <li>Counts swipes in those feeds and shows the counter, banners and the block screen on top of them.</li>
+          <li>In <strong>Chrome and Brave</strong>, reads the address bar to see if a short-video page (such as <code>youtube.com/shorts/</code>) is open. The address is checked on the spot and never saved.</li>
+          <li>When <strong>Strict Mode</strong> is on, checks Android Settings pages to stop ScrollSense from being switched off or uninstalled on impulse.</li>
+          <li>Notices when you switch to any other app, only so it can remove its overlays. It does not look at the content of other apps.</li>
+        </ul>
+        <p>The service does not read message text, log keystrokes, capture passwords, take screenshots or record your screen. Nothing it sees leaves your phone.</p>
+      </article>
+
+      <article>
+        <h2>4. Permissions</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Permission</th><th>Why it is needed</th></tr></thead>
+            <tbody>
+              <tr><td>Accessibility Service</td><td>Detects short-video feeds and swipes, and shows ScrollSense's overlays (see section 3)</td></tr>
+              <tr><td>Notifications</td><td>An optional alert when you reach 80% of your daily limit, and a weekly summary of your swipes on Sunday evening. You can turn either off in the app or in Android settings.</td></tr>
+              <tr><td>Wake lock, run at startup, foreground service, network state</td><td>Added automatically by Android's widget and background-task libraries to refresh the home-screen widget. ScrollSense still has no Internet permission and makes no network connections.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article>
+        <h2>5. Sharing</h2>
+        <p>We do not sell, share or transfer your data to anyone. The app contains no advertising, analytics, crash-reporting or tracking SDKs.</p>
+        <p>If you tap <strong>Export swipe history (CSV)</strong>, Android's share menu opens and you choose where the file goes, for example email or Google Drive. That app then handles the file under its own privacy policy.</p>
+        <p>If you tap <strong>Report a problem</strong> in Settings, your email app opens a message to <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> with a text file attached. The file contains your phone model, Android version and language, the versions of ScrollSense, Instagram, YouTube, Facebook and Snapchat, your ScrollSense settings, today's swipe counts, the recent counting log and the screen layouts described in section 2. Captions, names, messages and any other words from your screen are removed before the file is made. Nothing is sent unless you press Send in your email app, and you can read or delete the file first. We use reports only to fix counting problems and do not share them.</p>
+      </article>
+
+      <article>
+        <h2>6. Android device backup</h2>
+        <p>If you have turned on Android backup (Settings → Google → Backup), Android may include ScrollSense's settings and swipe log in your personal backup to your Google account, so they can be restored on a new phone. This backup is run by Google under its privacy policy; we cannot see it. You can turn backup off in your phone's settings.</p>
+      </article>
+
+      <article>
+        <h2>7. Keeping and deleting your data</h2>
+        <p>Your data stays on your phone until you delete it. To erase your swipe history, open ScrollSense → Settings → <strong>Delete all data</strong>. To erase everything, including your settings, go to <strong>Settings → Apps → ScrollSense → Storage → Clear storage</strong>, or uninstall the app. If you sent us a problem report, email <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> and we will delete it. Apart from reports you choose to send, we never receive your data.</p>
+      </article>
+
+      <article>
+        <h2>8. Children</h2>
+        <p>ScrollSense is not directed at children under 13. The app does not collect personal information from anyone; problem reports are sent only by the person who chooses to send them.</p>
+      </article>
+
+      <article>
+        <h2>9. Changes to this policy</h2>
+        <p>If the way ScrollSense handles data changes, we will update this page and the effective date above before the change reaches the app.</p>
+      </article>
+
+      <article>
+        <h2>10. Contact</h2>
+        <p>Questions about privacy? Write to <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a>.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===================== HINDI ===================== -->
+  <main id="policy-hi" lang="hi" class="page" hidden>
+    <div>
+      <h1>गोपनीयता नीति</h1>
+      <p class="meta">लागू होने की तारीख़: 17 अक्टूबर 2026 · ScrollSense Android ऐप (पैकेज <code>com.scrollsense.app</code>) पर लागू</p>
+    </div>
+
+    <div class="facts">
+      <h2>संक्षेप में</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense के पास Android की <strong>इंटरनेट अनुमति नहीं है</strong>। यह अपने आप आपका डेटा कहीं नहीं भेज सकता।</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ऐप जो भी दर्ज करता है, वह <strong>सिर्फ़ आपके फ़ोन पर</strong> रहता है।</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>कोई अकाउंट नहीं, कोई विज्ञापन नहीं, कोई एनालिटिक्स या ट्रैकिंग नहीं।</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>हम आपके मैसेज, पासवर्ड या आपका टाइप किया कुछ भी कभी नहीं पढ़ते।</span></li>
+      </ul>
+    </div>
+
+    <section class="policy">
+      <article>
+        <h2>1. हम कौन हैं</h2>
+        <p>ScrollSense एक डिजिटल-वेलबीइंग ऐप है जो आपको रोज़ स्वाइप किए जाने वाले छोटे वीडियो (Reels, Shorts, Spotlight) सीमित करने में मदद करता है। इसे IFAST SOLUTION ने बनाया है। आप हमसे <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> पर संपर्क कर सकते हैं।</p>
+      </article>
+
+      <article>
+        <h2>2. ऐप आपके फ़ोन पर क्या सेव करता है</h2>
+        <p>आपकी गिनती, चार्ट और लिमिट दिखाने के लिए ScrollSense आपके फ़ोन की निजी स्टोरेज में ये रखता है:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>डेटा</th><th>इसमें क्या है</th><th>क्यों</th></tr></thead>
+            <tbody>
+              <tr><td>स्वाइप लॉग</td><td>हर स्वाइप की तारीख़, घंटा और समय, किस ऐप में हुआ (जैसे Instagram), क्या DM पास इस्तेमाल हुआ, और हर वीडियो कितनी देर स्क्रीन पर रहा</td><td>रोज़ का काउंटर, फ़ीड में बिताया समय, घंटे और हफ़्ते के चार्ट, स्ट्रीक</td></tr>
+              <tr><td>आपकी सेटिंग्स</td><td>रोज़ का कोटा, सुरक्षा मोड, स्ट्रिक्ट मोड, थीम, ओवरले की पसंद, सेटअप में बताया गया अनुमानित स्वाइप</td><td>आपकी चुनी हुई लिमिट लागू करने के लिए</td></tr>
+              <tr><td>हर ऐप के नियम</td><td>कौन से ऐप सुरक्षित हैं और कौन से फ़ीड या कमेंट छिपाने हैं</td><td>ब्लॉकिंग स्क्रीन के कंट्रोल</td></tr>
+              <tr><td>हाल की गिनती का लॉग (सिर्फ़ मेमोरी में)</td><td>काउंटर के पिछले कुछ सौ फ़ैसले (जैसे "रील गिनी", "विज्ञापन छोड़ा") और हर ऐप की आख़िरी स्क्रीन की बनावट, जिसमें से हर शब्द हटा दिया जाता है</td><td>सिर्फ़ <strong>समस्या बताएं</strong> के लिए (भाग 5)। यह मेमोरी में रहता है, स्टोरेज में कभी सेव नहीं होता, और फ़ोन या ऐप दोबारा शुरू होने पर मिट जाता है</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>स्वाइप लॉग में आपके देखे वीडियो, उन्हें किसने पोस्ट किया, या आपने क्या पढ़ा या टाइप किया, यह कुछ नहीं होता।</p>
+      </article>
+
+      <article>
+        <h2>3. ScrollSense, Accessibility Service का उपयोग कैसे करता है</h2>
+        <p>छोटे वीडियो का फ़ीड स्क्रीन पर कब है और आप अगले वीडियो पर कब स्वाइप करते हैं, यह जानने के लिए ScrollSense को Android की Accessibility Service चाहिए। इसे आप ख़ुद चालू करते हैं और <strong>Settings → Accessibility</strong> में कभी भी बंद कर सकते हैं। आपकी अनुमति से यह सर्विस:</p>
+        <ul>
+          <li><strong>Instagram, YouTube, Facebook और Snapchat</strong> की स्क्रीन बनावट देखती है, ताकि Reels, Shorts या Spotlight प्लेयर, Instagram की DM स्क्रीन, और आपके छिपाने के लिए चुने गए हिस्से (जैसे Explore ग्रिड या YouTube कमेंट) पहचान सके।</li>
+          <li>उन फ़ीड में स्वाइप गिनती है और उनके ऊपर काउंटर, बैनर और ब्लॉक स्क्रीन दिखाती है।</li>
+          <li><strong>Chrome और Brave</strong> में एड्रेस बार पढ़ती है, ताकि पता चले कि कोई छोटा-वीडियो पेज (जैसे <code>youtube.com/shorts/</code>) खुला है या नहीं। एड्रेस उसी समय जांचा जाता है और कभी सेव नहीं होता।</li>
+          <li><strong>स्ट्रिक्ट मोड</strong> चालू होने पर Android Settings के पेज जांचती है, ताकि ScrollSense को जल्दबाज़ी में बंद या अनइंस्टॉल न किया जा सके।</li>
+          <li>आप किसी दूसरे ऐप पर जाते हैं तो सिर्फ़ इतना देखती है, ताकि अपने ओवरले हटा सके। दूसरे ऐप की सामग्री नहीं देखती।</li>
+        </ul>
+        <p>यह सर्विस मैसेज का टेक्स्ट नहीं पढ़ती, कीस्ट्रोक दर्ज नहीं करती, पासवर्ड नहीं लेती, स्क्रीनशॉट या स्क्रीन रिकॉर्डिंग नहीं करती। जो कुछ यह देखती है, वह आपके फ़ोन से बाहर नहीं जाता।</p>
+      </article>
+
+      <article>
+        <h2>4. अनुमतियां</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>अनुमति</th><th>क्यों ज़रूरी है</th></tr></thead>
+            <tbody>
+              <tr><td>Accessibility Service</td><td>छोटे वीडियो फ़ीड और स्वाइप पहचानना, और ScrollSense के ओवरले दिखाना (भाग 3 देखें)</td></tr>
+              <tr><td>नोटिफ़िकेशन</td><td>रोज़ की लिमिट का 80% होने पर एक वैकल्पिक अलर्ट, और रविवार शाम आपके हफ़्ते के स्वाइप की रिपोर्ट। दोनों को ऐप या Android सेटिंग्स में बंद कर सकते हैं।</td></tr>
+              <tr><td>Wake lock, स्टार्टअप पर चलना, foreground service, नेटवर्क स्थिति</td><td>होम-स्क्रीन विजेट रिफ़्रेश करने वाली Android लाइब्रेरी इन्हें अपने आप जोड़ती हैं। ScrollSense के पास फिर भी इंटरनेट अनुमति नहीं है और यह कोई नेटवर्क कनेक्शन नहीं बनाता।</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article>
+        <h2>5. शेयरिंग</h2>
+        <p>हम आपका डेटा किसी को नहीं बेचते, शेयर या ट्रांसफ़र नहीं करते। ऐप में कोई विज्ञापन, एनालिटिक्स, क्रैश-रिपोर्टिंग या ट्रैकिंग SDK नहीं है।</p>
+        <p>अगर आप <strong>स्वाइप हिस्ट्री एक्सपोर्ट करें (CSV)</strong> पर टैप करते हैं, तो Android का शेयर मेन्यू खुलता है और फ़ाइल कहां जाएगी (जैसे ईमेल या Google Drive), यह आप चुनते हैं। उसके बाद वह ऐप अपनी गोपनीयता नीति के तहत फ़ाइल संभालता है।</p>
+        <p>अगर आप Settings में <strong>समस्या बताएं</strong> पर टैप करते हैं, तो आपका ईमेल ऐप <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> के लिए एक मैसेज खोलता है, जिसके साथ एक टेक्स्ट फ़ाइल जुड़ी होती है। इसमें आपके फ़ोन का मॉडल, Android वर्ज़न और भाषा, ScrollSense, Instagram, YouTube, Facebook और Snapchat के वर्ज़न, आपकी ScrollSense सेटिंग्स, आज की गिनती, हाल की गिनती का लॉग और भाग 2 में बताई गई स्क्रीन बनावट होती है। फ़ाइल बनने से पहले कैप्शन, नाम, मैसेज और स्क्रीन का हर दूसरा शब्द हटा दिया जाता है। जब तक आप अपने ईमेल ऐप में Send नहीं दबाते, कुछ नहीं भेजा जाता, और आप पहले फ़ाइल पढ़ या हटा सकते हैं। हम रिपोर्ट सिर्फ़ गिनती की समस्याएं ठीक करने के लिए इस्तेमाल करते हैं और किसी से शेयर नहीं करते।</p>
+      </article>
+
+      <article>
+        <h2>6. Android डिवाइस बैकअप</h2>
+        <p>अगर आपने Android बैकअप चालू किया है (Settings → Google → Backup), तो Android नए फ़ोन पर वापस लाने के लिए ScrollSense की सेटिंग्स और स्वाइप लॉग को आपके Google अकाउंट के निजी बैकअप में शामिल कर सकता है। यह बैकअप Google अपनी गोपनीयता नीति के तहत चलाता है; हम इसे नहीं देख सकते। आप फ़ोन की सेटिंग्स में बैकअप बंद कर सकते हैं।</p>
+      </article>
+
+      <article>
+        <h2>7. डेटा रखना और मिटाना</h2>
+        <p>आपका डेटा तब तक आपके फ़ोन पर रहता है जब तक आप उसे न मिटाएं। स्वाइप हिस्ट्री मिटाने के लिए ScrollSense → Settings → <strong>सारा डेटा मिटाएं</strong> खोलें। सेटिंग्स समेत सब कुछ मिटाने के लिए <strong>Settings → Apps → ScrollSense → Storage → Clear storage</strong> पर जाएं, या ऐप अनइंस्टॉल करें। अगर आपने हमें कोई समस्या रिपोर्ट भेजी है, तो <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> पर लिखें, हम उसे मिटा देंगे। आपकी भेजी रिपोर्ट के अलावा आपका डेटा हमारे पास कभी नहीं आता।</p>
+      </article>
+
+      <article>
+        <h2>8. बच्चे</h2>
+        <p>ScrollSense 13 साल से कम उम्र के बच्चों के लिए नहीं बनाया गया है। ऐप किसी से निजी जानकारी इकट्ठा नहीं करता; समस्या रिपोर्ट सिर्फ़ वही भेजता है जो उसे भेजना चुनता है।</p>
+      </article>
+
+      <article>
+        <h2>9. इस नीति में बदलाव</h2>
+        <p>अगर ScrollSense के डेटा संभालने का तरीका बदलता है, तो ऐप में बदलाव आने से पहले हम यह पेज और ऊपर दी गई तारीख़ अपडेट करेंगे।</p>
+      </article>
+
+      <article>
+        <h2>10. संपर्क</h2>
+        <p>गोपनीयता से जुड़ा कोई सवाल? <a href="mailto:support@ifastsolution.com">support@ifastsolution.com</a> पर लिखें।</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>ScrollSense · IFAST SOLUTION · Last updated 17 October 2026</p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var panels = { en: document.getElementById('policy-en'), hi: document.getElementById('policy-hi') };
+    var buttons = document.querySelectorAll('.lang-switch button');
+
+    function show(lang) {
+      if (!panels[lang]) lang = 'en';
+      Object.keys(panels).forEach(function (key) { panels[key].hidden = key !== lang; });
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+      document.documentElement.lang = lang;
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.lang);
+        try { history.replaceState(null, '', '#' + b.dataset.lang); } catch (e) {}
+      });
+    });
+
+    // Open Hindi directly with a #hi link
+    show((location.hash || '').replace('#', '') === 'hi' ? 'hi' : 'en');
+  })();
+</script>
