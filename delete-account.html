@@ -1,0 +1,254 @@
+<title>Delete ScrollSense Account</title>
+<meta name="description" content="How to delete your ScrollSense Battles account and the data that goes with it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Hind:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a single reading column under a compact branded header; a fact sheet up top, then numbered policy sections. */
+  :root {
+    --bg: #f6f8f7;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --line: #d7e0dc;
+    --accent: #047857;
+    --accent-wash: #e3f4ec;
+    --placeholder: #9a3412;
+    --placeholder-wash: #fff1e6;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Hind", "Nirmala UI", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f19;
+      --surface: #131b2b;
+      --ink: #f1f5f9;
+      --ink-soft: #a3b1c6;
+      --line: #26334d;
+      --accent: #34d399;
+      --accent-wash: #0f2a22;
+      --placeholder: #fdba74;
+      --placeholder-wash: #3a2212;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0f19;
+    --surface: #131b2b;
+    --ink: #f1f5f9;
+    --ink-soft: #a3b1c6;
+    --line: #26334d;
+    --accent: #34d399;
+    --accent-wash: #0f2a22;
+    --placeholder: #fdba74;
+    --placeholder-wash: #3a2212;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  /* Flex children shrink to the screen; the wide tables scroll inside .table-wrap instead */
+  .page > *, .policy { min-width: 0; }
+  main.page { width: 100%; }  /* auto margins would otherwise size it to its widest line */
+  code { overflow-wrap: anywhere; }
+
+  header { display: flex; flex-direction: column; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand svg { width: 44px; height: 44px; flex: none; }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); align-self: flex-start; }
+  .lang-switch button {
+    font: inherit; font-size: 0.95rem; font-weight: 500;
+    border: 0; background: transparent; color: var(--ink-soft);
+    padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  }
+  .lang-switch button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+  .lang-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .facts {
+    background: var(--accent-wash);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: grid;
+    gap: 10px;
+  }
+  .facts h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0; letter-spacing: 0.02em; }
+  .facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .facts li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .facts li svg { width: 20px; height: 20px; margin-top: 4px; color: var(--accent); }
+
+  section.policy { display: flex; flex-direction: column; gap: 28px; }
+  article { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  article h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    text-wrap: balance;
+  }
+  article p, article ul, article ol { margin: 0; }
+  article ul, article ol { padding-left: 1.2em; display: grid; gap: 6px; }
+  strong { font-weight: 600; }
+  code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; color: var(--ink-soft); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .fill {
+    color: var(--placeholder);
+    background: var(--placeholder-wash);
+    border: 1px dashed var(--placeholder);
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: 600;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  footer { color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 18px; }
+
+  [lang="hi"] h1, [lang="hi"] article h2, [lang="hi"] .facts h2 { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lang-switch button { transition: background-color 0.15s, color 0.15s; }
+  }
+</style>
+
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg aria-hidden="true" width="44" height="44" viewBox="0 0 108 108"><defs><radialGradient id="bg" cx="54" cy="50" r="66" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#22704C"/><stop offset="1" stop-color="#123F2B"/></radialGradient><clipPath id="msquircle44"><rect x="0" y="0" width="108" height="108" rx="30"/></clipPath></defs><g clip-path="url(#msquircle44)"><rect width="108" height="108" fill="url(#bg)"/><g transform="translate(16.00,14.48) scale(0.76)"><path d="M28,92 a22,3.2 0 1,0 44,0 a22,3.2 0 1,0 -44,0 Z" fill="#000000" fill-opacity="0.1"/><path d="M50,37 C50,32 50,28 51,24" fill="none" stroke="#3E8F60" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M51,24 C43,13 30,13 25,19 C31,28 43,29 51,24 Z" fill="#4FAE77" fill-opacity="1"/><path d="M51,24 C58,11 72,10 77,16 C72,26 59,29 51,24 Z" fill="#62C08A" fill-opacity="1"/><path d="M50,36 C68,36 81,47 81,63 C81,79 67,89 50,89 C33,89 19,79 19,63 C19,47 32,36 50,36 Z" fill="#A9DDB7" fill-opacity="1"/><path d="M21,68 C24,81 36,89 50,89 C64,89 76,81 79,68 C72,77 62,81 50,81 C38,81 28,77 21,68 Z" fill="#8FCDA0" fill-opacity="1"/><path d="M29,46 a6,3.6 0 1,0 12,0 a6,3.6 0 1,0 -12,0 Z" fill="#FFFFFF" fill-opacity="0.45"/><path d="M33,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M55,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M39.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M61.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M36.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M58.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M24.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M66.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M45,71 Q50,76 55,71" fill="none" stroke="#2A2622" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>
+      <span class="brand-name">ScrollSense</span>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="btn-en" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" id="btn-hi" data-lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+  </header>
+
+    <!-- ===================== ENGLISH ===================== -->
+  <main id="policy-en" lang="en" class="page">
+    <div>
+      <h1>Delete your account</h1>
+      <p class="meta">ScrollSense by IFAST SOLUTION · package <code>com.scrollsense.app</code></p>
+    </div>
+    <section class="policy">
+      <article>
+        <h2>In the app</h2>
+        <ol>
+          <li>Open ScrollSense and go to the <strong>Battles</strong> tab.</li>
+          <li>Tap <strong>Delete my account</strong>, then confirm.</li>
+        </ol>
+        <p>It happens right away.</p>
+      </article>
+      <article>
+        <h2>Without the app</h2>
+        <p>Email <a href="mailto:support@ifastsolution.com?subject=Delete%20my%20ScrollSense%20account">support@ifastsolution.com</a> from the Google account you signed in with, with the subject "Delete my ScrollSense account". We delete it within 7 days and reply when it's done.</p>
+      </article>
+      <article>
+        <h2>What is deleted</h2>
+        <ul>
+          <li>your Google sign-in record in Firebase (ID, email and name);</li>
+          <li>your nickname, your place in every squad, and your daily swipe counts and limits (also in squads you left);</li>
+          <li>the nudges you sent and received;</li>
+          <li>your phone's messaging token.</li>
+        </ul>
+        <p>Nothing is kept. Crash reports are not linked to your account; Firebase deletes them after 90 days. Your swipe history on your phone is not affected. To erase it, open Settings → <strong>Delete all data</strong>, or uninstall the app.</p>
+      </article>
+      <article>
+        <h2>More</h2>
+        <p>See the full <a href="privacy-policy.html">privacy policy</a>.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===================== HINDI ===================== -->
+  <main id="policy-hi" lang="hi" class="page" hidden>
+    <div>
+      <h1>अपना अकाउंट मिटाएं</h1>
+      <p class="meta">ScrollSense, IFAST SOLUTION · पैकेज <code>com.scrollsense.app</code></p>
+    </div>
+    <section class="policy">
+      <article>
+        <h2>ऐप में</h2>
+        <ol>
+          <li>ScrollSense खोलें और <strong>बैटल</strong> टैब पर जाएं।</li>
+          <li><strong>मेरा अकाउंट मिटाएं</strong> पर टैप करें और कन्फ़र्म करें।</li>
+        </ol>
+        <p>अकाउंट उसी समय मिट जाता है।</p>
+      </article>
+      <article>
+        <h2>ऐप के बिना</h2>
+        <p>जिस Google अकाउंट से साइन-इन किया था, उससे <a href="mailto:support@ifastsolution.com?subject=Delete%20my%20ScrollSense%20account">support@ifastsolution.com</a> पर "Delete my ScrollSense account" विषय के साथ ईमेल करें। हम 7 दिन के अंदर अकाउंट मिटाकर जवाब देंगे।</p>
+      </article>
+      <article>
+        <h2>क्या मिटता है</h2>
+        <ul>
+          <li>Firebase में आपका Google साइन-इन रिकॉर्ड (ID, ईमेल और नाम);</li>
+          <li>आपका निकनेम, हर स्क्वॉड में आपकी जगह, और आपके रोज़ के स्वाइप और लिमिट (छोड़े हुए स्क्वॉड के भी);</li>
+          <li>आपके भेजे और मिले नज;</li>
+          <li>आपके फ़ोन का मैसेजिंग टोकन।</li>
+        </ul>
+        <p>कुछ भी रखा नहीं जाता। क्रैश रिपोर्ट आपके अकाउंट से जुड़ी नहीं होतीं; Firebase उन्हें 90 दिन बाद मिटा देता है। फ़ोन पर आपकी स्वाइप हिस्ट्री पर इसका असर नहीं होता। उसे मिटाने के लिए Settings → <strong>सारा डेटा मिटाएं</strong> खोलें या ऐप अनइंस्टॉल करें।</p>
+      </article>
+      <article>
+        <h2>और जानकारी</h2>
+        <p>पूरी <a href="privacy-policy.html#hi">गोपनीयता नीति</a> देखें।</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>ScrollSense · IFAST SOLUTION</p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var panels = { en: document.getElementById('policy-en'), hi: document.getElementById('policy-hi') };
+    var buttons = document.querySelectorAll('.lang-switch button');
+
+    function show(lang) {
+      if (!panels[lang]) lang = 'en';
+      Object.keys(panels).forEach(function (key) { panels[key].hidden = key !== lang; });
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+      document.documentElement.lang = lang;
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.lang);
+        try { history.replaceState(null, '', '#' + b.dataset.lang); } catch (e) {}
+      });
+    });
+
+    // Open Hindi directly with a #hi link
+    show((location.hash || '').replace('#', '') === 'hi' ? 'hi' : 'en');
+  })();
+</script>
