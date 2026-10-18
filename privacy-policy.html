@@ -165,7 +165,7 @@
     <div class="facts">
       <h2>The short version</h2>
       <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense uses the Internet <strong>for Battles</strong>, only after you join a squad, and to send a <strong>crash report</strong> if the app crashes. Your squad sees your nickname and each day's swipe count and limit. Nothing else.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense uses the Internet <strong>for Battles</strong>, only after you join a squad, for an optional <strong>backup to your Google account</strong>, and to send a <strong>crash report</strong> if the app crashes. Your squad sees your nickname and each day's swipe count and limit. Nothing else.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>Everything else the app records stays <strong>on your phone</strong>.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>No ads, no analytics or tracking tools. Crash reports never include your swipes or anything from your screen.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>We never read your messages, passwords or what you type.</span></li>
@@ -245,6 +245,8 @@
       <article>
         <h2>6. Android device backup</h2>
         <p>If you have turned on Android backup (Settings → Google → Backup), Android may include ScrollSense's settings and swipe log in your personal backup to your Google account, so they can be restored on a new phone. This backup is run by Google under its privacy policy; we cannot see it. You can turn backup off in your phone's settings.</p>
+        <h3>Backup to your Google account (optional)</h3>
+        <p>If you turn on <strong>Back up to Google account</strong> in Settings, ScrollSense signs you in with Google and saves the same data as <strong>Back up to a file</strong> (your swipe log, time in feeds, settings and badges) to a private record in Google Cloud Firestore (Mumbai), once a day on Wi-Fi while charging, or when you tap <strong>Back up now</strong>. Only your signed-in account can read it; your squad and we cannot see it in the app. Turning the switch off stops new backups. <strong>Delete my account</strong> deletes the backup too.</p>
       </article>
 
       <article>
@@ -279,7 +281,7 @@
     <div class="facts">
       <h2>संक्षेप में</h2>
       <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense इंटरनेट का इस्तेमाल <strong>बैटल के लिए</strong> (स्क्वॉड से जुड़ने के बाद ही) और ऐप क्रैश होने पर <strong>क्रैश रिपोर्ट</strong> भेजने के लिए करता है। आपका स्क्वॉड आपका निकनेम और हर दिन के स्वाइप और लिमिट देखता है। और कुछ नहीं।</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>ScrollSense इंटरनेट का इस्तेमाल <strong>बैटल के लिए</strong> (स्क्वॉड से जुड़ने के बाद ही), वैकल्पिक <strong>Google अकाउंट बैकअप</strong> के लिए, और ऐप क्रैश होने पर <strong>क्रैश रिपोर्ट</strong> भेजने के लिए करता है। आपका स्क्वॉड आपका निकनेम और हर दिन के स्वाइप और लिमिट देखता है। और कुछ नहीं।</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>इसके अलावा ऐप जो भी दर्ज करता है, वह <strong>सिर्फ़ आपके फ़ोन पर</strong> रहता है।</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>कोई विज्ञापन नहीं, कोई एनालिटिक्स या ट्रैकिंग नहीं। क्रैश रिपोर्ट में आपके स्वाइप या स्क्रीन की कोई चीज़ कभी नहीं होती।</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span>हम आपके मैसेज, पासवर्ड या आपका टाइप किया कुछ भी कभी नहीं पढ़ते।</span></li>
@@ -359,6 +361,8 @@
       <article>
         <h2>6. Android डिवाइस बैकअप</h2>
         <p>अगर आपने Android बैकअप चालू किया है (Settings → Google → Backup), तो Android नए फ़ोन पर वापस लाने के लिए ScrollSense की सेटिंग्स और स्वाइप लॉग को आपके Google अकाउंट के निजी बैकअप में शामिल कर सकता है। यह बैकअप Google अपनी गोपनीयता नीति के तहत चलाता है; हम इसे नहीं देख सकते। आप फ़ोन की सेटिंग्स में बैकअप बंद कर सकते हैं।</p>
+        <h3>Google अकाउंट पर बैकअप (वैकल्पिक)</h3>
+        <p>अगर आप Settings में <strong>Google अकाउंट पर बैकअप</strong> चालू करते हैं, तो ScrollSense आपको Google से साइन इन करवाकर वही डेटा जो <strong>फ़ाइल में बैकअप</strong> में जाता है (स्वाइप लॉग, फ़ीड में बिताया समय, सेटिंग्स और बैज), Google Cloud Firestore (मुंबई) में एक निजी रिकॉर्ड में सेव करता है, रोज़ एक बार Wi-Fi पर और चार्जिंग के समय, या जब आप <strong>अभी बैकअप लें</strong> दबाएं। इसे सिर्फ़ आपका साइन-इन अकाउंट पढ़ सकता है; ऐप में न आपका स्क्वॉड इसे देख सकता है, न हम। स्विच बंद करने पर नए बैकअप रुक जाते हैं। <strong>मेरा अकाउंट मिटाएं</strong> बैकअप भी मिटा देता है।</p>
       </article>
 
       <article>
