@@ -1,0 +1,291 @@
+<title>Join My Squad</title>
+<meta name="description" content="Join a ScrollSense squad: who scrolls less, against their own daily limit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Hind:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a single reading column under a compact branded header; a fact sheet up top, then numbered policy sections. */
+  :root {
+    --bg: #f6f8f7;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --line: #d7e0dc;
+    --accent: #047857;
+    --accent-wash: #e3f4ec;
+    --placeholder: #9a3412;
+    --placeholder-wash: #fff1e6;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Hind", "Nirmala UI", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0f19;
+      --surface: #131b2b;
+      --ink: #f1f5f9;
+      --ink-soft: #a3b1c6;
+      --line: #26334d;
+      --accent: #34d399;
+      --accent-wash: #0f2a22;
+      --placeholder: #fdba74;
+      --placeholder-wash: #3a2212;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0f19;
+    --surface: #131b2b;
+    --ink: #f1f5f9;
+    --ink-soft: #a3b1c6;
+    --line: #26334d;
+    --accent: #34d399;
+    --accent-wash: #0f2a22;
+    --placeholder: #fdba74;
+    --placeholder-wash: #3a2212;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  .page { max-width: 46rem; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  /* Flex children shrink to the screen; the wide tables scroll inside .table-wrap instead */
+  .page > *, .policy { min-width: 0; }
+  main.page { width: 100%; }  /* auto margins would otherwise size it to its widest line */
+  code { overflow-wrap: anywhere; }
+
+  header { display: flex; flex-direction: column; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand svg { width: 44px; height: 44px; flex: none; }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 6vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .meta { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); align-self: flex-start; }
+  .lang-switch button {
+    font: inherit; font-size: 0.95rem; font-weight: 500;
+    border: 0; background: transparent; color: var(--ink-soft);
+    padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  }
+  .lang-switch button[aria-pressed="true"] { background: var(--accent); color: var(--bg); }
+  .lang-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .facts {
+    background: var(--accent-wash);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: grid;
+    gap: 10px;
+  }
+  .facts h2 { font-family: var(--font-display); font-size: 1.05rem; margin: 0; letter-spacing: 0.02em; }
+  .facts ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  .facts li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .facts li svg { width: 20px; height: 20px; margin-top: 4px; color: var(--accent); }
+
+  section.policy { display: flex; flex-direction: column; gap: 28px; }
+  article { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  article h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin: 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    text-wrap: balance;
+  }
+  article p, article ul, article ol { margin: 0; }
+  article ul, article ol { padding-left: 1.2em; display: grid; gap: 6px; }
+  strong { font-weight: 600; }
+  code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.88em; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-weight: 600; color: var(--ink-soft); font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .fill {
+    color: var(--placeholder);
+    background: var(--placeholder-wash);
+    border: 1px dashed var(--placeholder);
+    border-radius: 6px;
+    padding: 0 6px;
+    font-weight: 600;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  footer { color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 18px; }
+
+  [lang="hi"] h1, [lang="hi"] article h2, [lang="hi"] .facts h2 { font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lang-switch button { transition: background-color 0.15s, color 0.15s; }
+  }
+
+  /* Join page: the code, one big button, and the way in without the app */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+  }
+  .code-label { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+  .code {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: clamp(2rem, 11vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    padding-left: 0.18em;
+    color: var(--accent);
+    margin: 0;
+  }
+  .open {
+    display: block;
+    width: 100%;
+    max-width: 22rem;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 14px 20px;
+  }
+  .open:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .broken { color: var(--placeholder); margin: 0; }
+</style>
+
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg aria-hidden="true" width="44" height="44" viewBox="0 0 108 108"><defs><radialGradient id="bg" cx="54" cy="50" r="66" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#22704C"/><stop offset="1" stop-color="#123F2B"/></radialGradient><clipPath id="msquircle44"><rect x="0" y="0" width="108" height="108" rx="30"/></clipPath></defs><g clip-path="url(#msquircle44)"><rect width="108" height="108" fill="url(#bg)"/><g transform="translate(16.00,14.48) scale(0.76)"><path d="M28,92 a22,3.2 0 1,0 44,0 a22,3.2 0 1,0 -44,0 Z" fill="#000000" fill-opacity="0.1"/><path d="M50,37 C50,32 50,28 51,24" fill="none" stroke="#3E8F60" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M51,24 C43,13 30,13 25,19 C31,28 43,29 51,24 Z" fill="#4FAE77" fill-opacity="1"/><path d="M51,24 C58,11 72,10 77,16 C72,26 59,29 51,24 Z" fill="#62C08A" fill-opacity="1"/><path d="M50,36 C68,36 81,47 81,63 C81,79 67,89 50,89 C33,89 19,79 19,63 C19,47 32,36 50,36 Z" fill="#A9DDB7" fill-opacity="1"/><path d="M21,68 C24,81 36,89 50,89 C64,89 76,81 79,68 C72,77 62,81 50,81 C38,81 28,77 21,68 Z" fill="#8FCDA0" fill-opacity="1"/><path d="M29,46 a6,3.6 0 1,0 12,0 a6,3.6 0 1,0 -12,0 Z" fill="#FFFFFF" fill-opacity="0.45"/><path d="M33,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M55,61 a6,7 0 1,0 12,0 a6,7 0 1,0 -12,0 Z" fill="#2A2622" fill-opacity="1"/><path d="M39.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M61.0,58.2 a2.3,2.3 0 1,0 4.6,0 a2.3,2.3 0 1,0 -4.6,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M36.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M58.3,64 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0 Z" fill="#FFFFFF" fill-opacity="1"/><path d="M24.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M66.5,70 a4.5,3 0 1,0 9.0,0 a4.5,3 0 1,0 -9.0,0 Z" fill="#F29C93" fill-opacity="0.75"/><path d="M45,71 Q50,76 55,71" fill="none" stroke="#2A2622" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>
+      <span class="brand-name">ScrollSense</span>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" id="btn-en" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" id="btn-hi" data-lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+  </header>
+
+    <!-- ===================== ENGLISH ===================== -->
+  <main id="policy-en" lang="en" class="page">
+    <div>
+      <h1>Join my squad</h1>
+      <p class="meta">ScrollSense Battles: who scrolls less this week?</p>
+    </div>
+    <div class="card">
+      <p class="code-label">Squad code</p>
+      <p class="code" data-code>------</p>
+      <a class="open" data-open data-valid href="#">Open in ScrollSense</a>
+      <p class="broken" data-broken hidden>This link is missing its code. Ask your friend to send it again.</p>
+    </div>
+    <section class="policy">
+      <article>
+        <h2>Don't have ScrollSense yet?</h2>
+        <ol>
+          <li><a data-store href="#">Get ScrollSense</a> and set it up.</li>
+          <li>Open <strong>Battles</strong> → <strong>Join with a code</strong> and type <strong data-code>------</strong>.</li>
+        </ol>
+      </article>
+      <article>
+        <h2>How it works</h2>
+        <p>Everyone is judged against their own daily limit, so it's fair. Your squad sees only your nickname and each day's swipe count and limit, never your email or what you watched.</p>
+        <p><a href="../privacy-policy.html">Privacy policy</a></p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===================== HINDI ===================== -->
+  <main id="policy-hi" lang="hi" class="page" hidden>
+    <div>
+      <h1>मेरे स्क्वॉड से जुड़ें</h1>
+      <p class="meta">ScrollSense बैटल: इस हफ़्ते कौन कम स्क्रॉल करता है?</p>
+    </div>
+    <div class="card">
+      <p class="code-label">स्क्वॉड कोड</p>
+      <p class="code" data-code>------</p>
+      <a class="open" data-open data-valid href="#">ScrollSense में खोलें</a>
+      <p class="broken" data-broken hidden>इस लिंक में कोड नहीं है। दोस्त से दोबारा भेजने को कहें।</p>
+    </div>
+    <section class="policy">
+      <article>
+        <h2>ScrollSense अभी नहीं है?</h2>
+        <ol>
+          <li><a data-store href="#">ScrollSense लें</a> और सेट अप करें।</li>
+          <li><strong>बैटल</strong> → <strong>कोड से जुड़ें</strong> खोलें और <strong data-code>------</strong> लिखें।</li>
+        </ol>
+      </article>
+      <article>
+        <h2>यह कैसे काम करता है</h2>
+        <p>हर किसी को उसकी अपनी रोज़ की लिमिट से आंका जाता है, इसलिए मुकाबला बराबरी का है। आपका स्क्वॉड सिर्फ़ आपका निकनेम और हर दिन के स्वाइप और लिमिट देखता है, आपका ईमेल या आपने क्या देखा, कभी नहीं।</p>
+        <p><a href="../privacy-policy.html#hi">गोपनीयता नीति</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>ScrollSense · IFAST SOLUTION</p>
+  </footer>
+</div>
+
+<script>
+  // The squad code from the link (?c=ABC123): shown big, and handed to the app
+  (function () {
+    var code = (new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var valid = /^[A-HJ-NP-Z2-9]{6}$/.test(code);
+    var store = 'https://play.google.com/store/apps/details?id=com.scrollsense.app';
+    document.querySelectorAll('[data-code]').forEach(function (el) { el.textContent = valid ? code : '------'; });
+    document.querySelectorAll('[data-valid]').forEach(function (el) { el.hidden = !valid; });
+    document.querySelectorAll('[data-broken]').forEach(function (el) { el.hidden = valid; });
+    document.querySelectorAll('[data-store]').forEach(function (el) { el.href = store; });
+    if (!valid) return;
+    // Android opens ScrollSense on its Battles tab with the code filled in; without the app, the store
+    var app = 'intent://join/' + code + '#Intent;scheme=scrollsense;package=com.scrollsense.app;S.browser_fallback_url=' +
+      encodeURIComponent(store) + ';end';
+    document.querySelectorAll('[data-open]').forEach(function (el) { el.href = /Android/i.test(navigator.userAgent) ? app : store; });
+  })();
+
+  (function () {
+    var panels = { en: document.getElementById('policy-en'), hi: document.getElementById('policy-hi') };
+    var buttons = document.querySelectorAll('.lang-switch button');
+
+    function show(lang) {
+      if (!panels[lang]) lang = 'en';
+      Object.keys(panels).forEach(function (key) { panels[key].hidden = key !== lang; });
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+      document.documentElement.lang = lang;
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        show(b.dataset.lang);
+        try { history.replaceState(null, '', '#' + b.dataset.lang); } catch (e) {}
+      });
+    });
+
+    // Open Hindi directly with a #hi link
+    show((location.hash || '').replace('#', '') === 'hi' ? 'hi' : 'en');
+  })();
+</script>
