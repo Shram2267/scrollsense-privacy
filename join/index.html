@@ -155,6 +155,7 @@
     text-align: center;
   }
   .code-label { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+  .invite { margin: 0; background: var(--accent-wash); border-radius: 12px; padding: 10px 14px; }
   .code {
     font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
     font-size: clamp(2rem, 11vw, 2.8rem);
@@ -194,13 +195,18 @@
 
     <!-- ===================== ENGLISH ===================== -->
   <main id="policy-en" lang="en" class="page">
-    <div>
+    <div data-squad>
       <h1>Join my squad</h1>
       <p class="meta">ScrollSense Battles: who scrolls less this week?</p>
     </div>
+    <div data-invite-only hidden>
+      <h1>Join me on ScrollSense</h1>
+      <p class="meta">It counts your Reels and Shorts swipes and stops them at your daily limit.</p>
+    </div>
     <div class="card">
-      <p class="code-label">Squad code</p>
-      <p class="code" data-code>------</p>
+      <p class="code-label" data-squad>Squad code</p>
+      <p class="code" data-code data-squad>------</p>
+      <p class="invite" data-invite hidden>Join with invite code <strong data-ref>-------</strong> and we both get a Leaf Shield 🌱</p>
       <a class="open" data-open data-valid href="#">Open in ScrollSense</a>
       <p class="broken" data-broken hidden>This link is missing its code. Ask your friend to send it again.</p>
     </div>
@@ -209,7 +215,8 @@
         <h2>Don't have ScrollSense yet?</h2>
         <ol>
           <li><a data-store href="#">Get ScrollSense</a> and set it up.</li>
-          <li>Open <strong>Battles</strong> → <strong>Join with a code</strong> and type <strong data-code>------</strong>.</li>
+          <li data-invite hidden>If the invite code isn't filled in, open <strong>Settings</strong> → <strong>Invite friends</strong> → <strong>Have a friend's invite code?</strong> and type <strong data-ref>-------</strong>.</li>
+          <li data-squad>Open <strong>Battles</strong> → <strong>Join with a code</strong> and type <strong data-code>------</strong>.</li>
         </ol>
       </article>
       <article>
@@ -222,13 +229,18 @@
 
   <!-- ===================== HINDI ===================== -->
   <main id="policy-hi" lang="hi" class="page" hidden>
-    <div>
+    <div data-squad>
       <h1>मेरे स्क्वॉड से जुड़ें</h1>
       <p class="meta">ScrollSense बैटल: इस हफ़्ते कौन कम स्क्रॉल करता है?</p>
     </div>
+    <div data-invite-only hidden>
+      <h1>ScrollSense पर मेरे साथ जुड़ें</h1>
+      <p class="meta">यह आपके Reels और Shorts के स्वाइप गिनता है और रोज़ की लिमिट पर उन्हें रोक देता है।</p>
+    </div>
     <div class="card">
-      <p class="code-label">स्क्वॉड कोड</p>
-      <p class="code" data-code>------</p>
+      <p class="code-label" data-squad>स्क्वॉड कोड</p>
+      <p class="code" data-code data-squad>------</p>
+      <p class="invite" data-invite hidden>इनवाइट कोड <strong data-ref>-------</strong> से जुड़ें, हम दोनों को एक लीफ़ शील्ड मिलेगी 🌱</p>
       <a class="open" data-open data-valid href="#">ScrollSense में खोलें</a>
       <p class="broken" data-broken hidden>इस लिंक में कोड नहीं है। दोस्त से दोबारा भेजने को कहें।</p>
     </div>
@@ -237,7 +249,8 @@
         <h2>ScrollSense अभी नहीं है?</h2>
         <ol>
           <li><a data-store href="#">ScrollSense लें</a> और सेट अप करें।</li>
-          <li><strong>बैटल</strong> → <strong>कोड से जुड़ें</strong> खोलें और <strong data-code>------</strong> लिखें।</li>
+          <li data-invite hidden>अगर इनवाइट कोड अपने आप न भरे, तो <strong>सेटिंग्स</strong> → <strong>दोस्तों को इनवाइट करें</strong> → <strong>दोस्त का इनवाइट कोड है?</strong> खोलें और <strong data-ref>-------</strong> लिखें।</li>
+          <li data-squad><strong>बैटल</strong> → <strong>कोड से जुड़ें</strong> खोलें और <strong data-code>------</strong> लिखें।</li>
         </ol>
       </article>
       <article>
@@ -254,18 +267,31 @@
 </div>
 
 <script>
-  // The squad code from the link (?c=ABC123): shown big, and handed to the app
+  // The squad code (?c=ABC123) and the sender's invite code (?r=ABCD234): shown, and handed to
+  // the app, or to the Play Store as the install referrer so a new install picks them up
   (function () {
-    var code = (new URLSearchParams(location.search).get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-    var valid = /^[A-HJ-NP-Z2-9]{6}$/.test(code);
-    var store = 'https://play.google.com/store/apps/details?id=com.scrollsense.app';
-    document.querySelectorAll('[data-code]').forEach(function (el) { el.textContent = valid ? code : '------'; });
+    var params = new URLSearchParams(location.search);
+    var clean = function (v) { return (v || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); };
+    var code = clean(params.get('c'));
+    var ref = clean(params.get('r'));
+    var squad = /^[A-HJ-NP-Z2-9]{6}$/.test(code);
+    var invite = /^[A-HJ-NP-Z2-9]{7}$/.test(ref);
+    var valid = squad || invite;
+    var referrer = [invite ? 'ref=' + ref : '', squad ? 'squad=' + code : ''].filter(Boolean).join('&');
+    var store = 'https://play.google.com/store/apps/details?id=com.scrollsense.app' +
+      (referrer ? '&referrer=' + encodeURIComponent(referrer) : '');
+    document.querySelectorAll('[data-code]').forEach(function (el) { el.textContent = squad ? code : '------'; });
+    document.querySelectorAll('[data-ref]').forEach(function (el) { el.textContent = ref; });
+    document.querySelectorAll('[data-squad]').forEach(function (el) { el.hidden = !squad && invite; });
+    document.querySelectorAll('[data-invite-only]').forEach(function (el) { el.hidden = squad || !invite; });
+    document.querySelectorAll('[data-invite]').forEach(function (el) { el.hidden = !invite; });
     document.querySelectorAll('[data-valid]').forEach(function (el) { el.hidden = !valid; });
     document.querySelectorAll('[data-broken]').forEach(function (el) { el.hidden = valid; });
     document.querySelectorAll('[data-store]').forEach(function (el) { el.href = store; });
     if (!valid) return;
-    // Android opens ScrollSense on its Battles tab with the code filled in; without the app, the store
-    var app = 'intent://join/' + code + '#Intent;scheme=scrollsense;package=com.scrollsense.app;S.browser_fallback_url=' +
+    // Android opens ScrollSense with the codes; without the app, the store (with the codes kept)
+    var app = 'intent://join/' + (squad ? code : '') + (invite ? '?r=' + ref : '') +
+      '#Intent;scheme=scrollsense;package=com.scrollsense.app;S.browser_fallback_url=' +
       encodeURIComponent(store) + ';end';
     document.querySelectorAll('[data-open]').forEach(function (el) { el.href = /Android/i.test(navigator.userAgent) ? app : store; });
   })();
