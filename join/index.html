@@ -278,7 +278,7 @@
     var invite = /^[A-HJ-NP-Z2-9]{7}$/.test(ref);
     var valid = squad || invite;
     var referrer = [invite ? 'ref=' + ref : '', squad ? 'squad=' + code : ''].filter(Boolean).join('&');
-    var store = 'https://play.google.com/store/apps/details?id=com.scrollsense.app' +
+    var store = 'https://play.google.com/store/apps/details?id=com.ifastsolution.scrollsense' +
       (referrer ? '&referrer=' + encodeURIComponent(referrer) : '');
     document.querySelectorAll('[data-code]').forEach(function (el) { el.textContent = squad ? code : '------'; });
     document.querySelectorAll('[data-ref]').forEach(function (el) { el.textContent = ref; });
@@ -291,7 +291,7 @@
     if (!valid) return;
     // Android opens ScrollSense with the codes; without the app, the store (with the codes kept)
     var app = 'intent://join/' + (squad ? code : '') + (invite ? '?r=' + ref : '') +
-      '#Intent;scheme=scrollsense;package=com.scrollsense.app;S.browser_fallback_url=' +
+      '#Intent;scheme=scrollsense;package=com.ifastsolution.scrollsense;S.browser_fallback_url=' +
       encodeURIComponent(store) + ';end';
     document.querySelectorAll('[data-open]').forEach(function (el) { el.href = /Android/i.test(navigator.userAgent) ? app : store; });
   })();
